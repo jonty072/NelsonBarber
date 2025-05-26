@@ -81,7 +81,7 @@
               "title": "New Section",
               "subtitle": "Subtitle",
               "description": "Description for the new section",
-              "image_url": "https://i.ibb.co/2LcZ3BQ/logo.webp",
+              "image_url": "https://hair.nelson.themerex.net/wp-content/uploads/2020/04/Logo-Salon.png",
               "background_url": null,
               "cta_text": "Get Started",
               "cta_link": "/contact"
@@ -101,7 +101,7 @@
               "title": "Build Beautiful barber shop",
               "subtitle": "Modern Web Development",
               "description": "Our modular website builder allows you to create stunning websites with ease. No coding required.",
-              "image_url": "https://i.ibb.co/2LcZ3BQ/logo.webp",
+              "image_url": "https://hair.nelson.themerex.net/wp-content/uploads/2020/04/Logo-Salon.png",
               "background_url": null,
               "cta_text": "Get Started",
               "cta_link": "/contact"
@@ -192,11 +192,100 @@
             "items": []
           },
           {
+            "id": "pricing-section-uuid",
+            "page_id": "a6452a55-af24-40db-9490-42852c3e7b9a",
+            "type": "pricing",
+            "variant": "1",
+            "position": 4,
+            "is_active": true,
+            "content": {
+              "id": "pricing-content-uuid",
+              "section_id": "pricing-section-uuid",
+              "title": "Our Prices",
+              "subtitle": "Quality service at reasonable prices",
+              "description": "Service beyond expectation"
+            },
+            "items": [
+              {
+                "id": "price-item-1-uuid",
+                "section_id": "pricing-section-uuid",
+                "title": "Haircut short hair",
+                "price": "40$",
+                "description": null,
+                "cta_text": null, "cta_link": null, "tag": null, "duration": null,
+                "position": 0
+              },
+              {
+                "id": "price-item-2-uuid",
+                "section_id": "pricing-section-uuid",
+                "title": "highlights",
+                "price": "35$",
+                "description": null,
+                "cta_text": null, "cta_link": null, "tag": null, "duration": null,
+                "position": 1
+              },
+              {
+                "id": "price-item-3-uuid",
+                "section_id": "pricing-section-uuid",
+                "title": "Haircut + styling",
+                "price": "70$",
+                "description": null,
+                "cta_text": null, "cta_link": null, "tag": null, "duration": null,
+                "position": 2
+              },
+              {
+                "id": "price-item-4-uuid",
+                "section_id": "pricing-section-uuid",
+                "title": "perm",
+                "price": "95$",
+                "description": null,
+                "cta_text": null, "cta_link": null, "tag": null, "duration": null,
+                "position": 3
+              },
+              {
+                "id": "price-item-5-uuid",
+                "section_id": "pricing-section-uuid",
+                "title": "Haircut long hair",
+                "price": "80$",
+                "description": null,
+                "cta_text": null, "cta_link": null, "tag": null, "duration": null,
+                "position": 4
+              },
+              {
+                "id": "price-item-6-uuid",
+                "section_id": "pricing-section-uuid",
+                "title": "Styling",
+                "price": "35$",
+                "description": null,
+                "cta_text": null, "cta_link": null, "tag": null, "duration": null,
+                "position": 5
+              },
+              {
+                "id": "price-item-7-uuid",
+                "section_id": "pricing-section-uuid",
+                "title": "Haircut + Coloring",
+                "price": "70$",
+                "description": null,
+                "cta_text": null, "cta_link": null, "tag": null, "duration": null,
+                "position": 6
+              },
+              {
+                "id": "price-item-8-uuid",
+                "section_id": "pricing-section-uuid",
+                "title": "Lamination",
+                "price": "115$",
+                "description": null,
+                "cta_text": null, "cta_link": null, "tag": null, "duration": null,
+                "position": 7
+              }
+            ]
+          },
+          {
             "id": "8453573e-d3e7-4e95-8057-9a3d7b8a5eed",
             "page_id": "a6452a55-af24-40db-9490-42852c3e7b9a",
             "type": "testimonial",
             "variant": "1",
-            "position": 4,
+            "position": 5,
             "is_active": true,
             "content": {
               "id": "48813f16-3aea-471a-8df6-b3f999c5617d",

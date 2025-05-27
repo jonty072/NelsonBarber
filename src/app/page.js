@@ -3,6 +3,9 @@ import { headers } from "next/headers";
 import dynamicImport from "next/dynamic";
 import { fetchPageData } from "@/lib/api/siteservice";
 import { MOCK_DATA } from "@/lib/mock/mockdata";
+import NelsonHero from "@/components/section/NelsonHero";
+import ServiceExpectationSection from "@/components/section/ServiceExpectationSection";
+import TestimonialsSection from "@/components/section/TestimonialsSection";
 
 // Force dynamic rendering since we're using headers()
 export const dynamic = "force-dynamic";
@@ -86,67 +89,70 @@ const PageContent = dynamicImport(() => import("@/components/PageContent"), {
 });
 
 export default async function SubdomainPage({ params }) {
-  try {
-    const { slug = "home" } = params; // Default to home if no slug provided
+  const { slug = "home" } = params; // Default to home if no slug provided
+  let pageData;
+  let isHomePage = slug === "home";
 
-    // Get the host from headers to determine subdomain
+  try {
     const headersList = await headers();
     const host = headersList.get("host") || "localhost:3000";
-    console.log("Host in SubdomainPage:", host);
-
-    // Get subdomain through our helper function
     const subdomain = getSubdomain(host);
+    pageData = await fetchPageData(subdomain, slug);
 
-    // Fetch the real data from Supabase
-    const {
-      site,
-      siteMeta,
-      config,
-      theme,
-      page,
-      sections: sectionsWithData,
-    } = await fetchPageData(subdomain, slug);
-
-    if (!page) {
+    if (!pageData.page) {
       return notFound();
     }
 
-    // Pass all data to client component which can use the theme context
+    if (isHomePage) {
+      return (
+        <>
+          <NelsonHero />
+          <ServiceExpectationSection />
+          <TestimonialsSection />
+        </>
+      );
+    }
+    // For non-homepage, render PageContent as before
     return (
       <PageContent
-        page={page}
-        sections={sectionsWithData}
-        theme={theme}
-        config={config}
+        page={pageData.page}
+        sections={pageData.sections}
+        theme={pageData.theme}
+        config={pageData.config}
       />
     );
   } catch (error) {
     console.error("Error rendering page:", error);
+    isHomePage = slug === "home"; 
 
-    // Fallback to mock data
-    const { slug = "home" } = params;
-    const page =
+    const mockPage =
       Object.values(MOCK_DATA.pages).find((p) => p.slug === slug) ||
       MOCK_DATA.pages.home;
 
-    if (!page) {
+    if (!mockPage) {
       return notFound();
     }
 
-    // Prepare the sections with the right types and variants for component mapping
-    const sectionsWithData = MOCK_DATA.sections.map((section) => {
-      return {
-        ...section,
-        type: section.type,
-        variant: section.variant,
-      };
-    });
+    const mockSections = MOCK_DATA.sections.map((section) => ({
+      ...section,
+      type: section.type,
+      variant: section.variant,
+    }));
 
-    // Use mock data in client component
+    if (isHomePage) {
+      return (
+        <>
+          <NelsonHero />
+          <ServiceExpectationSection />
+          <TestimonialsSection />
+        </>
+      );
+    }
+    // For non-homepage mock data, render PageContent as before
     return (
       <PageContent
-        page={page}
-        sections={sectionsWithData}
+        page={mockPage}
+        sections={mockSections}
         theme={MOCK_DATA.theme}
         config={MOCK_DATA.config}
       />

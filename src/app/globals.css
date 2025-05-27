@@ -44,7 +44,7 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.875rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -76,14 +76,54 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --card-shadow-hover: 0px 10px 20px rgba(0,0,0,0.1); /* Light theme card hover shadow */
+  --card-shadow-initial: 0px 5px 10px rgba(0,0,0,0.05); /* Lighter initial shadow */
+  
+  /* Modern Color Palette */
+  --primary-gradient: linear-gradient(135deg, #20a3dd 0%, #22d3ee 100%);
+  --secondary-gradient: linear-gradient(135deg, #E03A87 0%, #FF6B6B 100%);
+  --accent-gradient: linear-gradient(135deg, #22d3ee 0%, #0EA5E9 100%);
+  --neutral-gradient: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  
+  /* Modern Shadows */
+  --shadow-sm: 0 2px 8px -1px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px -2px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 20px 50px -4px rgba(0, 0, 0, 0.15);
+  
+  /* Glassmorphism Effects */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --glass-blur: blur(8px);
+  
+  /* Modern Button Styles */
+  --btn-primary-bg: var(--primary-gradient);
+  --btn-primary-hover: linear-gradient(135deg, #1c8fc4 0%, #0cb5db 100%);
+  --btn-shadow: 0 4px 15px -3px rgba(32, 163, 221, 0.3);
+  --btn-hover-shadow: 0 8px 25px -5px rgba(32, 163, 221, 0.4);
+  --btn-active-shadow: 0 2px 10px -2px rgba(32, 163, 221, 0.3);
+  
+  /* Animation Durations */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --transition-slow: 350ms;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
+  --background: oklch(0.10 0.005 285.823);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
+  --card: oklch(0.15 0.006 285.885);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
+  --popover: oklch(0.15 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.92 0.004 286.32);
   --primary-foreground: oklch(0.21 0.006 285.885);
@@ -110,6 +150,32 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+  --card-shadow-hover: 0px 8px 25px rgba(200, 200, 255, 0.1); /* Dark theme card hover shadow - subtle cool glow */
+  --card-shadow-initial: 0px 5px 10px rgba(0,0,0,0.15); /* Darker initial shadow for dark cards */
+  
+  /* Dark Theme Colors */
+  --primary-gradient: linear-gradient(135deg, #22d3ee 0%, #0EA5E9 100%);
+  --secondary-gradient: linear-gradient(135deg, #FF6B6B 0%, #E03A87 100%);
+  --accent-gradient: linear-gradient(135deg, #0EA5E9 0%, #22d3ee 100%);
+  --neutral-gradient: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2));
+  
+  /* Dark Theme Shadows */
+  --shadow-sm: 0 2px 8px -1px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 24px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 50px -4px rgba(0, 0, 0, 0.35);
+  
+  /* Dark Glassmorphism */
+  --glass-bg: rgba(0, 0, 0, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  
+  /* Dark Button Styles */
+  --btn-primary-bg: var(--primary-gradient);
+  --btn-primary-hover: linear-gradient(135deg, #0cb5db 0%, #0993d3 100%);
+  --btn-shadow: 0 4px 15px -3px rgba(34, 211, 238, 0.3);
+  --btn-hover-shadow: 0 8px 25px -5px rgba(34, 211, 238, 0.4);
+  --btn-active-shadow: 0 2px 10px -2px rgba(34, 211, 238, 0.3);
 }
 
 @layer base {
@@ -117,10 +183,149 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    background: #181b1f !important;
+    color: #e5e7eb !important;
+    font-family: 'Montserrat', Arial, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+    color: #fff !important;
+    font-family: 'Playfair Display', serif;
+  }
+  a {
+    color: #eab308;
+    transition: color 0.2s;
+    text-underline-offset: 2px;
+  }
+  a:hover {
+    color: #facc15;
   }
 }
 
 @layer utilities {
   /* Custom utility classes */
+  /* Beautiful Button - Blue/Teal for Dark Gray */
+  .btn-beautiful {
+    @apply inline-block px-6 py-3 rounded-lg font-semibold text-white shadow-lg transition-all duration-300;
+    background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%);
+    color: #fff !important;
+    box-shadow: 0 4px 16px 0 rgba(14,165,233,0.18);
+    position: relative;
+    overflow: hidden;
+    border: none;
+  }
+  .btn-beautiful:hover {
+    background: linear-gradient(90deg, #0ea5e9 0%, #2563eb 100%);
+    box-shadow: 0 8px 24px 0 rgba(14,165,233,0.28);
+    transform: translateY(-2px) scale(1.03);
+    color: #fff !important;
+  }
+  .btn-beautiful:active {
+    transform: scale(0.98);
+    color: #fff !important;
+  }
+
+  /* Beautiful Card */
+  .card-beautiful {
+    @apply rounded-2xl p-8 shadow-xl transition-all duration-300;
+    background: #23262f !important;
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(59,130,246,0.10);
+    box-shadow: 0 8px 32px 0 rgba(14,165,233,0.10);
+  }
+  .card-beautiful:hover {
+    box-shadow: 0 16px 48px 0 rgba(14,165,233,0.18);
+    transform: translateY(-4px) scale(1.02);
+    border-color: #0ea5e9;
+  }
+
+  /* Text Gradient */
+  .text-gradient-beautiful {
+    background: linear-gradient(90deg, #38bdf8 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Section Soft Background */
+  .section-soft {
+    background: #23262f !important;
+  }
+  .section-soft-dark {
+    background: #181a20 !important;
+  }
+
+  /* Bright text for dark backgrounds */
+  .text-bright {
+    color: #f3f4f6;
+  }
+
+  /* Accent Text (Blue/Teal) */
+  .text-accent {
+    color: #38bdf8 !important;
+  }
+  .text-accent:hover {
+    color: #0ea5e9 !important;
+  }
+
+  /* Gold Accent */
+  .text-gold {
+    color: #eab308 !important;
+  }
+  .border-gold {
+    border-color: #eab308 !important;
+  }
+
+  /* Button - Light (primary) */
+  .btn-primary {
+    @apply inline-block px-6 py-3 rounded-lg font-semibold shadow-md transition-all duration-300;
+    background: linear-gradient(90deg, #fff 0%, #f3f4f6 100%);
+    color: #181b1f !important;
+    border: none;
+    box-shadow: 0 2px 8px 0 rgba(24,27,31,0.10);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(90deg, #f3f4f6 0%, #fff 100%);
+    color: #eab308 !important;
+    box-shadow: 0 4px 16px 0 rgba(234,179,8,0.10);
+    transform: translateY(-2px) scale(1.03);
+  }
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  /* Button - Dark (secondary) */
+  .btn-dark {
+    @apply inline-block px-6 py-3 rounded-lg font-semibold shadow-md transition-all duration-300;
+    background: #23262f;
+    color: #fff !important;
+    border: 1.5px solid #eab308;
+    box-shadow: 0 2px 8px 0 rgba(234,179,8,0.10);
+  }
+  .btn-dark:hover {
+    background: #181b1f;
+    color: #eab308 !important;
+    border-color: #facc15;
+    box-shadow: 0 4px 16px 0 rgba(234,179,8,0.18);
+    transform: translateY(-2px) scale(1.03);
+  }
+  .btn-dark:active {
+    transform: scale(0.98);
+  }
+
+  /* Card */
+  .card-soft {
+    @apply rounded-2xl p-8 shadow-lg transition-all duration-300;
+    background: #23262f;
+    color: #e5e7eb;
+    border: 1px solid #23262f;
+  }
+  .card-soft:hover {
+    box-shadow: 0 8px 32px 0 rgba(234,179,8,0.10);
+    border-color: #eab308;
+    transform: translateY(-4px) scale(1.02);
+  }
 }

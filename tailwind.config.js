@@ -16,6 +16,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-montserrat)', 'sans-serif'],
+        serif: ['var(--font-playfair-display)', 'serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -50,6 +54,31 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        'nelson': {
+          blue: '#20a3dd',
+          'blue-dark': '#1c8fc4',
+          teal: '#22d3ee',
+          'teal-dark': '#0cb5db',
+          magenta: '#E03A87',
+          'magenta-dark': '#C02A73',
+          text: { 
+            light: '#777777',
+            DEFAULT: '#777777',
+            dark: '#cccccc'
+          },
+          'text-heading': {
+            light: '#333333',
+            DEFAULT: '#333333',
+            dark: '#f0f0f0'
+          },
+          light: {
+            light: '#f7f7f7',
+            DEFAULT: '#f7f7f7',
+            dark: '#2d2d2d'
+          },
+          DEFAULT: '#20a3dd',
+          'footer-bg': '#1e1e1e',
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -58,12 +87,12 @@ module.exports = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: 0 },
+          from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
+          to: { height: "0" },
         },
       },
       animation: {
@@ -72,5 +101,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
 } 

@@ -29,7 +29,7 @@ function mapToShadcnTheme(theme) {
     "--accent": theme.accent || "#f1f5f9",
     "--accent-foreground": theme.foreground || "#000000",
     "--destructive": theme.error || "#ff0000",
-    "--destructive-foreground": theme.background || "#ffffff",
+    "--destructive-foreground": theme.background || "#ffffff˛",
     "--border": theme.border || "#e2e8f0",
     "--input": theme.border || "#e2e8f0",
     "--ring": theme.primary || "#2563eb",
